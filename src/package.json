@@ -6,6 +6,7 @@
   "dependencies": {
     "@types/codemirror": "0.0.109",
     "@types/marked": "^2.0.2",
+    "chrono-node": "^2.3.0",
     "codemirror": "^5.61.1",
     "codemirror-spell-checker": "1.1.2",
     "compromise": "^13.11.2",

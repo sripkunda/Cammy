@@ -1,0 +1,27 @@
+{
+    "google": {
+        "base": "https://www.google.com/calendar/render?action=TEMPLATE",
+        "format": {
+            "text": {
+                "required": true,
+                "param": "text"
+            },
+            "dates": {
+                "required": true,
+                "param": "dates"
+            }, 
+            "details": {
+                "required": false,
+                "param": "details"
+            },
+            "recur": {
+                "required": false,
+                "param": "recur"
+            },
+            "location": {
+                "required": false,
+                "param": "location"
+            }
+        }
+    }
+}
