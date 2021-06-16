@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.jsdelivr.net; script-src 'self' https://*.jsdelivr.net"> -->
+    <title>Cammy Notepad</title>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/editor-style.css">
+  </head>
+  <body data-theme="light">
+
+    <div class="editor-container">
+      <textarea class="editor"></textarea>
+    </div>
+
+    <!-- Parsing Content -->
+    <script src="./js/editor/nlp/parser.js"></script>
+
+    <!-- WYSIWYG Editor (For overall text box) -->
+    <script src="./js/editor/cammyeditor.js"></script>
+    <script src="./js/editor/editor.js"></script>
+  </body>
+</html>

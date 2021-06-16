@@ -1,0 +1,29 @@
+{
+  "name": "cammy",
+  "version": "1.0.0",
+  "description": "Turn your notes into an action plan",
+  "main": "main.js",
+  "dependencies": {
+    "@types/codemirror": "0.0.109",
+    "@types/marked": "^2.0.2",
+    "codemirror": "^5.61.1",
+    "codemirror-spell-checker": "1.1.2",
+    "compromise": "^13.11.2",
+    "compromise-dates": "^2.2.1",
+    "compromise-numbers": "^1.3.0",
+    "easymde": "^2.15.0",
+    "electron": "^13.1.2",
+    "electron-find": "^1.0.6",
+    "electron-settings": "^4.0.2",
+    "marked": "^2.0.3",
+    "remove-markdown": "^0.3.0"
+  },
+  "devDependencies": {
+    "electron": "^13.1.2"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Sri Pranav Kunda",
+  "license": "ISC"
+}

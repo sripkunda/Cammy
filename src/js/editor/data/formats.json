@@ -1,0 +1,18 @@
+{
+  "yellow": {
+    "key":"repeats",
+    "value":false,
+    "description": "Represents regular events/tasks repeat."
+  },
+  "orange": {
+    "key":"repeats",
+    "value":true,
+    "description": "Represents events/tasks that repeat."
+  },
+  "none":
+  {
+    "key":"false",
+    "value":"true",
+    "description": "Represents text that should not be formatted."
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "planner": {
+        "parseEvents": true
+    }, 
+    "text": {
+        "parseEvents": false
+    }
+}
