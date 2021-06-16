@@ -1,4 +1,4 @@
-const { BrowserWindow, Menu, MenuItem, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem, dialog, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const CammyPreferences = require('./preferences');
@@ -105,13 +105,36 @@ class Cammy {
 
             menu.append(new MenuItem({
                 label: "Save",
-                click: () => { this.save() }
+                click: () => { this.save() },
+                accelerator: "CommandOrControl+Shift+S"
             })
             );
 
             menu.append(new MenuItem({
                 label: "Save As",
-                click: () => { this.save(true) }
+                click: () => { this.save(true) },
+                accelerator: "CommandOrControl+Shift+S"
+            })
+            );
+
+            menu.append(new MenuItem({
+                label: "Open",
+                click: () => { Cammy.open() },
+                accelerator: "CommandOrControl+O"
+            })
+            );
+
+            menu.append(new MenuItem({
+                label: "Switch Editor Theme",
+                click: () => { Cammy.switchColorTheme(); },
+                accelerator: "CommandOrControl+Shift+,"
+            })
+            );
+
+            menu.append(new MenuItem({
+                label: "Toggle Editor Mode",
+                click: () => { Cammy.toggleEventRecognition(); },
+                accelerator: "CommandOrControl+Shift+."
             })
             );
 
@@ -131,11 +154,8 @@ class Cammy {
     }
 
     #writeToFile(pat) {
-
         this.filePath = pat;
-
         this.window.webContents.send('savecontent', { path: pat });
-
         this.name = path.basename(this.filePath);
         this.saved = true;
         this.#retitle();
@@ -205,22 +225,21 @@ class Cammy {
     }
 
     static createEditorWindow() {
-
         // Create browser window
         const mainWindow = new BrowserWindow({
             width: 1000,
             height: 800,
-            icon: './img/icon.png',
+            icon: path.join(__dirname + '/../../img/icon.png'),
             webPreferences: {
                 spellcheck: true,
                 nodeIntegration: true,
                 contextIsolation: false,
                 enableRemoteModule: true,
-                preload: path.join('./preload.js'),
+                preload: path.join(__dirname + '/../../preload.js'),
             },
         });
 
-        mainWindow.webContents.toggleDevTools();
+        app.dock.setIcon(path.join(__dirname + '/../../img/icon.png'));
 
         mainWindow.loadFile('index.html');
 
@@ -233,6 +252,20 @@ class Cammy {
 
     static err(msg) {
         dialog.showMessageBoxSync(this.window, { type: "error", message: msg });
+    }
+
+    static async switchColorTheme() {
+        const config = await CammyPreferences.get('editor.theme');
+        const theme = config && config == 'dark' ? 'light' : 'dark';
+        await CammyPreferences.set('editor.theme', theme);
+        CammyPreferences.setColorTheme(theme);
+    }
+
+    static async toggleEventRecognition() {
+        const config = await CammyPreferences.get('editor.mode');
+        const mode = config && config == 'planner' ? 'text' : 'planner';
+        await CammyPreferences.set('editor.mode', mode);
+        CammyPreferences.setEditorMode(mode);
     }
 
     menuTemplate = [
@@ -309,22 +342,12 @@ class Cammy {
                 {
                     label: "Switch Color Theme",
                     accelerator: "CommandOrControl+Shift+,",
-                    click: async () => {
-                        const config = await CammyPreferences.get('editor.theme');
-                        const theme = config && config == 'dark' ? 'light' : 'dark';
-                        await CammyPreferences.set('editor.theme', theme);
-                        CammyPreferences.setColorTheme(theme);
-                    }
+                    click: async () => { switchColorTheme(); }
                 },
                 {
                     label: "Toggle Event Recognition",
                     accelerator: "CommandOrControl+Shift+.",
-                    click: async () => {
-                        const config = await CammyPreferences.get('editor.mode');
-                        const mode = config && config == 'planner' ? 'text' : 'planner';
-                        await CammyPreferences.set('editor.mode', mode);
-                        CammyPreferences.setEditorMode(mode);
-                    }
+                    click: async () => { toggleEventRecognition(); }
                 },
             ]
         },

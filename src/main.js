@@ -1,17 +1,16 @@
-const { app, BrowserWindow, Menu, Tray } = require('electron')
+const { app, BrowserWindow, Menu, Tray, nativeImage } = require('electron')
 const path = require('path');
 const Cammy = require('./js/native/window');
 
 app.whenReady().then(() => {
 
-  Cammy.newEditor();
-
-  app.on('activate', async function () {
-    if (BrowserWindow.getAllWindows().length === 0) await Cammy.newEditor();
-  });
-
   // Create tray for Cammy
-  tray = new Tray(path.join(__dirname, 'img/icon.png'));
+
+  const image = nativeImage.createFromPath(
+    path.join(__dirname, "img/icon.png")
+  );
+
+  tray = new Tray(image.resize({ width: 16, height: 16 }));
   var contextMenu = Menu.buildFromTemplate([
     {
       label: 'New Note', click: function () {
@@ -27,6 +26,12 @@ app.whenReady().then(() => {
   ]);
 
   tray.setContextMenu(contextMenu);
+
+  Cammy.newEditor();
+
+  app.on('activate', async function () {
+    if (BrowserWindow.getAllWindows().length === 0) await Cammy.newEditor();
+  });
 
 });
 

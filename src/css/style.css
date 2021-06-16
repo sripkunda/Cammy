@@ -28,7 +28,7 @@
 }
 
 :root {
-    --input-padding: 0px;
+    --input-padding: 10px; 
     --font-family: 'Roboto Slab', sans-serif;
     --font-size: 18px;
     --md-opacity: 0.4; 
@@ -56,13 +56,13 @@ body, html {
 }
 
 .editor-container {
-  padding: var(--input-padding);
+  padding: var(--input-padding) 0px 0px var(--input-padding);
   top: 0;
   left: 0;
   right: 0;
   margin: 0;
-  height: calc(100vh - var(--input-padding));
-  width: calc(100vw - var(--input-padding));
+  height: 100vh;
+  width: 100vw;
 }
 
 .editor:focus {
