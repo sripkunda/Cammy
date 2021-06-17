@@ -238,11 +238,8 @@ class Cammy {
                 preload: path.join(__dirname + '/../../preload.js'),
             },
         });
-
-        app.dock.setIcon(path.join(__dirname + '/../../img/icon.png'));
-
+        if (app.dock) app.dock.setIcon(path.join(__dirname + '/../../img/icon.png'));
         mainWindow.loadFile('index.html');
-
         return mainWindow;
     }
 
@@ -291,7 +288,7 @@ class Cammy {
                 {
                     label: "Save As",
                     accelerator: "CommandOrControl+Shift+S",
-                    click: () => { this.save(true) }
+                    click: () => { this.save(true); }
                 },
             ]
         },
@@ -307,7 +304,8 @@ class Cammy {
                 { role: 'paste' },
                 {
                     label: 'Add To Calendar',
-                    accelerator: 'CommandOrControl+Shift+A'
+                    accelerator: 'Alt+E',
+                    click: () => { this.window.webContents.send('addToCalendar'); }
                 }
             ]
         },
@@ -342,12 +340,12 @@ class Cammy {
                 {
                     label: "Switch Color Theme",
                     accelerator: "CommandOrControl+Shift+,",
-                    click: async () => { switchColorTheme(); }
+                    click: async () => { Cammy.switchColorTheme(); }
                 },
                 {
                     label: "Toggle Event Recognition",
                     accelerator: "CommandOrControl+Shift+.",
-                    click: async () => { toggleEventRecognition(); }
+                    click: async () => { Cammy.toggleEventRecognition(); }
                 },
             ]
         },

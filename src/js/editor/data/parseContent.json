@@ -2,7 +2,15 @@
    "repeats":{
       "words":[
          {
+            "word":"every day",
+            "lazyLength":0
+         },
+         {
             "word":"every",
+            "lazyLength":0
+         },
+         {
+            "word":"everyday",
             "lazyLength":0
          }
       ]

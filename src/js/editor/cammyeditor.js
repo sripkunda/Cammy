@@ -16,8 +16,8 @@ class CammyEditor {
         this.editor.codemirror.focus();
     }
 
-    updateState() {
-        if (editorModes[CammyEditor.editorMode] && editorModes[CammyEditor.editorMode].parseEvents) this.line = parse();
+    updateState(bAddToCalendar) {
+        if (editorModes[CammyEditor.editorMode] && editorModes[CammyEditor.editorMode].parseEvents) this.line = parse(bAddToCalendar == true ? true : false);
 
         document.querySelectorAll(".CodeMirror-line").forEach((e, i) => {
             if (i != this.line) {

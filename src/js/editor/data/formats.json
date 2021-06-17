@@ -1,11 +1,11 @@
 {
   "yellow": {
-    "key":"repeats",
+    "key":"recurs",
     "value":false,
     "description": "Represents regular events/tasks repeat."
   },
   "orange": {
-    "key":"repeats",
+    "key":"recurs",
     "value":true,
     "description": "Represents events/tasks that repeat."
   },

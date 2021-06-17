@@ -36,3 +36,7 @@ ipcRenderer.on('colorThemeChanged', (e, args) => {
 ipcRenderer.on('editorModeChanged', (e, args) => {
   CammyEditor.setEditorMode(args.mode); 
 });
+
+ipcRenderer.on('addToCalendar', (e, args) => {
+  cammy.updateState(true);
+});

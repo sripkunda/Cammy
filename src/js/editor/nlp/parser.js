@@ -5,52 +5,37 @@ var removeMd = require('remove-markdown');
 nlp.extend(require('compromise-dates'));
 nlp.extend(require('compromise-numbers'));
 
-// Data
-const keywords = require("./js/editor/data/parseContent.json");
 const formats = require("./js/editor/data/formats.json");
 
-function parse() {
+function parse(bAddToCalendar) {
   // Get the editor element(s)
   var tb = document.querySelector(".editor");
   var cont = cammy.editor.value();
   let ln = cammy.editor.codemirror.getCursor().line;
   const line = document.querySelectorAll('.CodeMirror-code pre')[ln] ? document.querySelectorAll('.CodeMirror-code pre')[ln].textContent : document.querySelectorAll('.CodeMirror-code pre')[--ln].textContent;
-  getMatches(line, ln);
+  getMatches(line, ln, bAddToCalendar);
   return ln;
 }
 
-function getMatches(line, ln) {
+function getMatches(line, ln, bAddToCalendar) {
   // Parse for understanding events, reminders, etc.
-  var matches = parseKw(line, keywords);
+  var matches = parseKw(line);
 
   // Check if an activity match is produced
   match = (matches['activity'] && matches['activity'].replace(/^\s/g, "") != "") && matches['date'];
   if (match) {
-    setMatch(matches, ln);
+    setMatch(matches, ln, bAddToCalendar);
   } else {
     formatLine(ln, "none");
   }
 }
 
-function parseKw(line, kw) {
+function parseKw(line) {
   let matches = new Object();
-  // Get information first from keywords
-  Object.keys(kw).forEach((i) => {
-    matches[i] = [];
-    kw[i].words.every((w) => {
-      if (line.indexOf(w.word.substr(0, Math.abs(w.lazyLength - w.word.length))) > -1 || (w.word.ignore && line.indexOf(w.word.replaceAll(w.word.ignore, "").substr(0, Math.abs(w.lazyLength - w.word.length))) > -1)) {
-        matches[i][0] = (w.word);
-        return false;
-      }
-      return true;
-    });
-  });
 
-  // Set repeating (for events)
-  matches['repeats'] = matches['repeats'].length > 0 ? true : false;
+  matches['text'] = line; // set text attribute
 
   // Setup for nlp
-
   let doc = nlp(removeMd(line));
 
   // Get date and time if not already determined
@@ -61,14 +46,22 @@ function parseKw(line, kw) {
   doc = nlp(removeMd(line));
 
   if (!matches['date'])
-    matches['date'] = doc.dates().format("{month} {date-ordinal} {time}").out('array')[0]; // get dates
-
+    matches['date'] = doc.dates().json().length > 0 ? doc.dates().json() : null; // get dates
   return matches;
 }
 
-function setMatch(matches, ln, t) {
-  if (!t) Object.keys(formats).forEach((f) => { if (matches[formats[f].key] == formats[f].value) t = f; }); // figure out which format to use
-  formatLine(ln, t, matches); // format the line 
+function setMatch(matches, ln, bAddToCalendar, t) {
+  if (!t)
+    matches['date'].every((d) => {
+      if (d.repeat) {
+        t = 'orange';
+        return false;
+      } else {
+        t = 'yellow'
+      }
+      return true;
+    });
+  formatLine(ln, t, matches, bAddToCalendar); // format the line 
 }
 
 function getActivity(doc) {
@@ -76,29 +69,57 @@ function getActivity(doc) {
   return doc.match("#Verb * #Noun", { fuzzy: 0.6 }).text() || doc.match("#Noun", { fuzzy: 1 }).text() || doc.match("#Verb", { fuzzy: 1 }).text(); // return the activity 
 }
 
-function formatLine(ln, style, matches) {
+function formatLine(ln, style, matches, bAddToCalendar) {
   document.querySelectorAll('.CodeMirror-code pre').forEach((e) => {
     e.classList.remove('cammy-tf-f');
     Object.keys(formats).forEach((f) => {
       e.classList.remove(`cammy-tf-${f}-f`);
     });
   });
-
-  let obj = document.querySelectorAll('.CodeMirror-code pre')[ln]; 
+  let obj = document.querySelectorAll('.CodeMirror-code pre')[ln];
   let cl = obj ? obj.classList : [];
   if (cl.length > 0) {
     cl.add(`cammy-tf-${style}-f`);
+
+    if (bAddToCalendar) addToCalendar(matches);
+
     obj.onclick = (e) => {
-      
-      let obj = new Object();  // create an empty object for data
-      obj['text'] = matches['activity']; // set activity
-
-      let activityDate = chrono.parseDate(matches['date']); // parse date with chrono 
-      obj['dates'] = (activityDate.toISOString() + "/" + activityDate.toISOString()).replaceAll("-", ""); // parse date and as date. 
-      let link = new CammyCalendarLink('google', obj).getLink();
-      shell.openExternal(link);
-
+      addToCalendar(matches);
     }
-    if (style != 'none') cl.add('cammy-tf-f');
   }
+  if (style != 'none') cl.add('cammy-tf-f');
+}
+
+function addToCalendar(matches) {
+  let obj = new Object();  // create an empty object for data
+  obj['text'] = matches['activity']; // set activity
+
+  const days = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
+  var dateSet = false;
+  var repeating = false;
+  recurCode = "RRULE:FREQ=WEEKLY;" + "WKST=SU;BYDAY=";
+
+  matches['date'].forEach((date, i) => {
+    if (date.repeat) {
+      repeating = true;
+      obj['dates'] = formatDate(date.repeat.generated[0].start + "/" + date.repeat.generated[0].end); 
+      let day = new Date(date.repeat.generated[0].start).getDay();
+      recurCode += days[day] + (i != matches['date'].length - 1 ? "," : "");
+      dateSet = true;
+    } else {
+      if (!dateSet) obj['dates'] = formatDate(matches['date'][0].start + "/" + matches['date'][0].end);
+
+      if (!dateSet && date.unit == 'time')
+        dateSet = true;
+    }
+  });
+
+  if (repeating) obj['recur'] = recurCode;
+
+  let link = new CammyCalendarLink('google', obj).getLink(); // get link from calendar object
+  shell.openExternal(link);
+}
+
+function formatDate(str) {
+  return str.replaceAll(".", "").replaceAll(":", "").replaceAll("-", "");
 }
