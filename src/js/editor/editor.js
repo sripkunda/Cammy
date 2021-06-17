@@ -13,8 +13,8 @@ const options = {
 const cammy = new CammyEditor(options, 0);
 
 // Parse and update content whenever an action happens in the editor window
-document.onkeyup = cammy.updateState;
-document.onclick = cammy.updateState;
+document.onkeyup = () => { cammy.updateState(); }
+document.onclick = () => { cammy.updateState(); }
 
 cammy.editor.codemirror.on("change", function(){
   cammy.updateSaveState(); 
@@ -30,7 +30,7 @@ ipcRenderer.on('setcontent', (e, args) => {
 });
 
 ipcRenderer.on('colorThemeChanged', (e, args) => {
-  setColorTheme(args.theme); 
+  CammyEditor.setColorTheme(args.theme); 
 });
 
 ipcRenderer.on('editorModeChanged', (e, args) => {

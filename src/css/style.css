@@ -28,7 +28,8 @@
 }
 
 :root {
-    --input-padding: 10px; 
+    --input-padding: 10px;
+    --top-offset: 2px;  
     --font-family: 'Roboto Slab', sans-serif;
     --font-size: 18px;
     --md-opacity: 0.4; 
@@ -56,7 +57,7 @@ body, html {
 }
 
 .editor-container {
-  padding: var(--input-padding) 0px 0px var(--input-padding);
+  padding: calc(var(--input-padding) - var(--top-offset)) 0px 0px var(--input-padding);
   top: 0;
   left: 0;
   right: 0;

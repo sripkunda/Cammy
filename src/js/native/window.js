@@ -5,11 +5,13 @@ const CammyPreferences = require('./preferences');
 
 class Cammy {
 
+    static instances = [];
     window;
     name;
     filePath;
     saved;
     watcher;
+    instanceIndex; 
     listeners = [];
 
     constructor(win, nam, fp) {
@@ -17,6 +19,7 @@ class Cammy {
         this.name = nam;
         this.filePath = fp;
         this.saved = true;
+        this.instanceIndex = Cammy.instances.push(this) - 1;
         this.#init();
     }
 
@@ -95,7 +98,7 @@ class Cammy {
 
     #setWindowMenu() {
         const menu = Menu.buildFromTemplate(this.menuTemplate);
-        this.window.setMenu(menu);
+        Menu.setApplicationMenu(menu);
     }
 
     #setContextMenu() {
@@ -167,6 +170,8 @@ class Cammy {
             delete this.listeners[i];
         });
 
+        Cammy.instances.splice(this.instanceIndex, 1);
+
         this.window.destroy();
     }
 
@@ -193,12 +198,12 @@ class Cammy {
                     var choice = dialog.showMessageBoxSync(this.window,
                         {
                             type: 'question',
-                            buttons: ['Back', 'Replace'],
+                            buttons: ['Replace', 'Back'],
                             title: 'Replace File',
                             message: 'The file "' + path.basename(pat) + '" already exists. Are you sure you want to replace this file?'
                         });
 
-                    if (choice == 0) {
+                    if (choice == 1) {
                         return this.save(true);
                     }
                 }
@@ -236,7 +241,7 @@ class Cammy {
                 contextIsolation: false,
                 enableRemoteModule: true,
                 preload: path.join(__dirname + '/../../preload.js'),
-            },
+            }
         });
         if (app.dock) app.dock.setIcon(path.join(__dirname + '/../../img/icon.png'));
         mainWindow.loadFile('index.html');
@@ -304,7 +309,7 @@ class Cammy {
                 { role: 'paste' },
                 {
                     label: 'Add To Calendar',
-                    accelerator: 'Alt+E',
+                    accelerator: 'CommandOrControl+Shift+A',
                     click: () => { this.window.webContents.send('addToCalendar'); }
                 }
             ]

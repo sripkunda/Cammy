@@ -2,7 +2,7 @@ const editorModes = require("./js/editor/data/editorModes.json");
 
 class CammyEditor {
 
-    static editorMode = Object.keys(editorModes)[0]; 
+    static editorMode = Object.keys(editorModes)[0];
     editor;
     line;
     saved;
@@ -17,8 +17,8 @@ class CammyEditor {
     }
 
     updateState(bAddToCalendar) {
-        if (editorModes[CammyEditor.editorMode] && editorModes[CammyEditor.editorMode].parseEvents) this.line = parse(bAddToCalendar == true ? true : false);
-
+        if (editorModes[CammyEditor.editorMode] && editorModes[CammyEditor.editorMode].parseEvents) parse(bAddToCalendar == true ? true : false);
+        this.line = this.editor.codemirror.getCursor().line;
         document.querySelectorAll(".CodeMirror-line").forEach((e, i) => {
             if (i != this.line) {
                 e.querySelectorAll('.cm-formatting').forEach((el) => { el.style.display = 'none'; });
@@ -31,7 +31,6 @@ class CammyEditor {
                 e.querySelectorAll('.cm-url').forEach((el) => { el.style.display = 'inline'; });
             }
         });
-
     }
 
     updateSaveState() {
@@ -50,18 +49,14 @@ class CammyEditor {
         this.editor.value(c);
     }
 
-    static setEditorMode(mode)
-    {
-        CammyEditor.editorMode = mode; 
-        if (!editorModes[mode].parseEvents) 
+    static setEditorMode(mode) {
+        CammyEditor.editorMode = mode;
+        if (!editorModes[mode].parseEvents)
             for (var i = 0; i < document.querySelectorAll(".CodeMirror-line").length; i++)
                 formatLine(i, 'none');
     }
-}
 
-/* Utility Functions */ 
-
-function setColorTheme(theme)
-{
-  document.body.setAttribute('data-theme', theme);
+    static setColorTheme(theme) {
+        document.body.setAttribute('data-theme', theme);
+    }
 }

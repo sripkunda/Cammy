@@ -29,12 +29,18 @@ app.whenReady().then(() => {
 
   Cammy.newEditor();
 
-  app.on('activate', async function () {
-    if (BrowserWindow.getAllWindows().length === 0) await Cammy.newEditor();
-  });
+});
 
+app.on('browser-window-focus', (e, w) => {
+  let menuTemplate = Cammy.instances.filter(c => c.window == w)[0];
+  if (menuTemplate.menuTemplate)
+    Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate.menuTemplate));
 });
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
+});
+
+app.on('activate', async function () {
+  if (BrowserWindow.getAllWindows().length === 0) await Cammy.newEditor();
 });
