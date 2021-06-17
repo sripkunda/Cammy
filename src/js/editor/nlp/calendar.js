@@ -14,9 +14,16 @@ class CammyCalendarLink {
         var link = baseURL + "&";
 
         Object.keys(format).forEach((f, i) => {
-            const val = dat[f];
+            let val = dat[f];
             if (format[f].required && !val) throw Error("Required calendar field is missing!");
-            if (val) link += format[f].param + "=" + val.replaceAll(" ", "%20") + "&";
+            if (format[f].capitalization && format[f].capitalization == 'title') {
+                val = val.split(' ');
+                val.forEach((w, i) => {
+                    val[i] = w.charAt(0).toUpperCase() + w.substr(1);
+                }); 
+                val = val.join(' ');
+            }
+            if (val) link += format[f].param + "=" + encodeURIComponent(val) + "&";
         });
         this.link = link;
     }

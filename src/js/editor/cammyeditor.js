@@ -1,4 +1,4 @@
-const editorModes = require("./js/editor/data/editorModes.json");
+const editorModes = require(path.join(__dirname, "js/editor/data/editorModes.json"));
 
 class CammyEditor {
 

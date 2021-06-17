@@ -1,8 +1,12 @@
 {
-  "name": "Cammy",
+  "name": "cammy",
   "version": "1.0.0",
-  "description": "Turn your notes into an action plan",
-  "main": "main.js",
+  "author": "Sri Pranav Kunda",
+  "license": "GPLv3",
+  "description": "An unrestrictive markdown notepad to organize your day.",
+  "repository": "https://github.com/sripkunda/Cammy",
+  "homepage": "https://cammy.web.app",
+  "main": "./src/main.js",
   "dependencies": {
     "@types/codemirror": "0.0.109",
     "@types/marked": "^2.0.2",
@@ -17,14 +21,13 @@
     "electron-find": "^1.0.6",
     "electron-settings": "^4.0.2",
     "marked": "^2.0.3",
-    "remove-markdown": "^0.3.0"
+    "remove-markdown": "^0.3.0",
+    "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
     "electron": "^13.1.2"
   },
   "scripts": {
     "start": "electron ."
-  },
-  "author": "Sri Pranav Kunda",
-  "license": "ISC"
+  }
 }

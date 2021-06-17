@@ -5,8 +5,6 @@ var removeMd = require('remove-markdown');
 nlp.extend(require('compromise-dates'));
 nlp.extend(require('compromise-numbers'));
 
-const formats = require("./js/editor/data/formats.json");
-
 function parse(bAddToCalendar) {
   // Get the editor element(s)
   var tb = document.querySelector(".editor");
@@ -72,7 +70,7 @@ function getActivity(doc) {
 function formatLine(ln, style, matches, bAddToCalendar) {
   document.querySelectorAll('.CodeMirror-code pre').forEach((e) => {
     e.classList.remove('cammy-tf-f');
-    Object.keys(formats).forEach((f) => {
+    ['yellow', 'orange', 'none'].forEach((f) => {
       e.classList.remove(`cammy-tf-${f}-f`);
     });
   });

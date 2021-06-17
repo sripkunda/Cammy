@@ -1,7 +1,7 @@
-const { app, BrowserWindow, Menu, MenuItem, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem, dialog, ipcMain, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const CammyPreferences = require('./preferences');
+const CammyPreferences = require(path.join(__dirname, 'preferences'));
 
 class Cammy {
 
@@ -11,7 +11,7 @@ class Cammy {
     filePath;
     saved;
     watcher;
-    instanceIndex; 
+    instanceIndex;
     listeners = [];
 
     constructor(win, nam, fp) {
@@ -85,7 +85,6 @@ class Cammy {
 
         ipcMain.on('save', saveHandler);
         this.listeners.push({ channel: 'save', handler: saveHandler, emitter: ipcMain });
-
     }
 
     #retitle() {
@@ -107,46 +106,60 @@ class Cammy {
             const menu = new Menu();
 
             menu.append(new MenuItem({
+                role: 'cut',
+                accelerator: "CommandOrControl+X"
+            }));
+
+            menu.append(new MenuItem({
+                role: 'copy',
+                accelerator: "CommandOrControl+C"
+            }));
+
+            menu.append(new MenuItem({
+                role: 'paste',
+                accelerator: "CommandOrControl+V"
+            }));
+
+            menu.append(new MenuItem({
                 label: "Save",
                 click: () => { this.save() },
                 accelerator: "CommandOrControl+Shift+S"
-            })
-            );
+            }));
 
             menu.append(new MenuItem({
                 label: "Save As",
                 click: () => { this.save(true) },
                 accelerator: "CommandOrControl+Shift+S"
-            })
-            );
+            }));
 
             menu.append(new MenuItem({
                 label: "Open",
                 click: () => { Cammy.open() },
                 accelerator: "CommandOrControl+O"
-            })
-            );
+            }));
 
             menu.append(new MenuItem({
                 label: "Switch Editor Theme",
                 click: () => { Cammy.switchColorTheme(); },
                 accelerator: "CommandOrControl+Shift+,"
-            })
-            );
+            }));
 
             menu.append(new MenuItem({
                 label: "Toggle Editor Mode",
                 click: () => { Cammy.toggleEventRecognition(); },
                 accelerator: "CommandOrControl+Shift+."
-            })
-            );
+            }));
 
+            menu.append(new MenuItem({
+                label: 'Add To Calendar',
+                accelerator: 'CommandOrControl+Shift+A',
+                click: () => { this.window.webContents.send('addToCalendar'); }
+            }));
             menu.popup()
         });
     }
 
     #loadContent() {
-
         if (this.filePath) {
             this.name = path.basename(this.filePath);
             const cont = fs.readFileSync(this.filePath);
@@ -169,9 +182,7 @@ class Cammy {
             ipcMain.removeListener(li.channel, li.handler);
             delete this.listeners[i];
         });
-
         Cammy.instances.splice(this.instanceIndex, 1);
-
         this.window.destroy();
     }
 
@@ -234,17 +245,18 @@ class Cammy {
         const mainWindow = new BrowserWindow({
             width: 1000,
             height: 800,
-            icon: path.join(__dirname + '/../../img/icon.png'),
+            icon: path.join(__dirname + '../../img/icon.png'),
             webPreferences: {
                 spellcheck: true,
                 nodeIntegration: true,
                 contextIsolation: false,
                 enableRemoteModule: true,
-                preload: path.join(__dirname + '/../../preload.js'),
+                preload: path.join(__dirname + '../../preload.js'),
             }
         });
         if (app.dock) app.dock.setIcon(path.join(__dirname + '/../../img/icon.png'));
-        mainWindow.loadFile('index.html');
+        mainWindow.loadFile(path.join(__dirname, '../../index.html'));
+        mainWindow.webContents.toggleDevTools();
         return mainWindow;
     }
 
@@ -340,9 +352,6 @@ class Cammy {
                     role: "close"
                 },
                 {
-                    role: "reload"
-                },
-                {
                     label: "Switch Color Theme",
                     accelerator: "CommandOrControl+Shift+,",
                     click: async () => { Cammy.switchColorTheme(); }
@@ -359,14 +368,13 @@ class Cammy {
             label: "Cammy",
             submenu: [
                 {
-                    label: "Help",
+                    label: "Contribute",
+                    click: () => { shell.openExternal("https://cammy.web.app/contribute") }
 
                 },
                 {
-                    label: "Check For Updates"
-                },
-                {
-                    label: "Website"
+                    label: "Website",
+                    click: () => { shell.openExternal("https://cammy.web.app") }
                 },
             ]
         },

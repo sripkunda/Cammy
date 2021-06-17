@@ -4,7 +4,8 @@
         "format": {
             "text": {
                 "required": true,
-                "param": "text"
+                "param": "text",
+                "capitalization": "title"
             },
             "dates": {
                 "required": true,
@@ -12,7 +13,8 @@
             }, 
             "details": {
                 "required": false,
-                "param": "details"
+                "param": "details",
+                "capitalization": "paragraph"
             },
             "recur": {
                 "required": false,
