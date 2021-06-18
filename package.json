@@ -5,7 +5,7 @@
   "license": "GPLv3",
   "description": "An unrestrictive markdown notepad to organize your day.",
   "repository": "https://github.com/sripkunda/Cammy",
-  "homepage": "https://cammy.web.app",
+  "homepage": "https://github.com/sripkunda/Cammy",
   "main": "./src/main.js",
   "dependencies": {
     "@types/codemirror": "0.0.109",

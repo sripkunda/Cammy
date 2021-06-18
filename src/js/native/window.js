@@ -256,7 +256,6 @@ class Cammy {
         });
         if (app.dock) app.dock.setIcon(path.join(__dirname + '/../../img/icon.png'));
         mainWindow.loadFile(path.join(__dirname, '../../index.html'));
-        mainWindow.webContents.toggleDevTools();
         return mainWindow;
     }
 
@@ -368,13 +367,13 @@ class Cammy {
             label: "Cammy",
             submenu: [
                 {
-                    label: "Contribute",
-                    click: () => { shell.openExternal("https://cammy.web.app/contribute") }
+                    label: "Website",
+                    click: () => { shell.openExternal("https://github.com/sripkunda/Cammy") }
 
                 },
                 {
-                    label: "Website",
-                    click: () => { shell.openExternal("https://cammy.web.app") }
+                    label: "Check For Updates",
+                    click: () => { shell.openExternal("https://github.com/sripkunda/Cammy") }
                 },
             ]
         },

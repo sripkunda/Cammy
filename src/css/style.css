@@ -43,6 +43,7 @@ body, html {
     font-size: var(--font-size);
     background: var(--bg-color);
 }
+
 * {
     box-sizing: border-box;
 }
