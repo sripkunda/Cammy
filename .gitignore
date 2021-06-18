@@ -6,6 +6,10 @@ node_modules
 package-lock.json
 npm-debug.log
 
+# electron
+build
+dist
+dist_packages
+
 # dev
 web
-dist
