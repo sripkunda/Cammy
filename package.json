@@ -1,6 +1,6 @@
 {
   "name": "cammy",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Sri Pranav Kunda <sripranav.kunda@gmail.com>",
   "license": "GPLv3",
   "description": "An unrestrictive markdown notepad to organize your day.",
@@ -36,21 +36,20 @@
     "appId": "com.cammy.app",
     "mac": {
       "category": "public.app-category.productivity",
-      "target": "dmg",
-      "icon": "build/icon.png"
+      "target": "zip",
+      "icon": "build_assets/darwin/icon.icns"
     },
     "linux": {
       "target": [
         "deb",
         "tar.gz"
-      ],
-      "icon": "build/icon.png"
+      ]
     },
     "win": {
       "target": [
         "squirrel"
       ],
-      "icon": "build/icon.png"
+      "icon": "./build_assets/win/icon.ico"
     }
   }
 }

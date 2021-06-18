@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, Tray, nativeImage, autoUpdater } = require('electron');
+const { app, BrowserWindow, Menu, Tray, nativeImage } = require('electron');
 const path = require('path');
 const Cammy = require(path.join(__dirname, 'js/native/window'));
 require('update-electron-app')(); 
