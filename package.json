@@ -2,7 +2,7 @@
   "name": "cammy",
   "version": "0.1.0",
   "author": "Sri Pranav Kunda <sripranav.kunda@gmail.com>",
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "description": "An unrestrictive markdown notepad to organize your day.",
   "repository": "https://github.com/sripkunda/Cammy",
   "homepage": "https://github.com/sripkunda/Cammy",
@@ -17,6 +17,7 @@
     "compromise-dates": "^2.2.1",
     "compromise-numbers": "^1.3.0",
     "easymde": "^2.15.0",
+    "electron-builder-squirrel-windows": "^22.11.7",
     "electron-find": "^1.0.6",
     "electron-settings": "^4.0.2",
     "marked": "^2.0.3",
@@ -54,6 +55,11 @@
       ],
       "icon": "./build_assets/win/icon.ico"
     },
+	"squirrelWindows": {
+		"iconUrl": "https://raw.githubusercontent.com/sripkunda/Cammy/master/build_assets/win/icon.ico",
+		"msi": true,
+		"loadingGif": "./build_assets/win/loading.gif"
+	},
     "fileAssociations": [
       {
         "ext": "md",

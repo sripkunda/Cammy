@@ -12,3 +12,4 @@ dist_packages
 
 # dev
 web
+*.log
