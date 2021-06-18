@@ -370,11 +370,7 @@ class Cammy {
                     label: "Website",
                     click: () => { shell.openExternal("https://github.com/sripkunda/Cammy") }
 
-                },
-                {
-                    label: "Check For Updates",
-                    click: () => { shell.openExternal("https://github.com/sripkunda/Cammy") }
-                },
+                }
             ]
         },
     ];

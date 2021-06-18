@@ -44,7 +44,8 @@
       "target": [
         "deb",
         "tar.gz",
-        "rpm"
+        "rpm",
+        "AppImage"
       ]
     },
     "win": {
