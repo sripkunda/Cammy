@@ -1,7 +1,7 @@
 const { app, BrowserWindow, Menu, Tray, nativeImage } = require('electron');
 const path = require('path');
 const Cammy = require(path.join(__dirname, 'js/native/window'));
-require('update-electron-app')(); 
+if (process.platform !== 'darwin') require('update-electron-app')(); 
 
 app.whenReady().then(() => {
 
@@ -39,7 +39,7 @@ app.on('browser-window-focus', (e, w) => {
 });
 
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
 });
 
 app.on('activate', async function () {

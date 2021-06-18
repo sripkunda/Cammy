@@ -34,6 +34,7 @@
   },
   "build": {
     "appId": "com.cammy.app",
+    "productName": "Cammy",
     "mac": {
       "category": "public.app-category.productivity",
       "target": "zip",
@@ -42,7 +43,8 @@
     "linux": {
       "target": [
         "deb",
-        "tar.gz"
+        "tar.gz",
+        "rpm"
       ]
     },
     "win": {
@@ -50,6 +52,13 @@
         "squirrel"
       ],
       "icon": "./build_assets/win/icon.ico"
-    }
+    },
+    "fileAssociations": [
+      {
+        "ext": "md",
+        "name": "MD File",
+        "role": "Editor"
+      }
+    ]
   }
 }
