@@ -55,11 +55,11 @@
       ],
       "icon": "./build_assets/win/icon.ico"
     },
-	"squirrelWindows": {
-		"iconUrl": "https://raw.githubusercontent.com/sripkunda/Cammy/master/build_assets/win/icon.ico",
-		"msi": true,
-		"loadingGif": "./build_assets/win/loading.gif"
-	},
+    "squirrelWindows": {
+      "iconUrl": "https://raw.githubusercontent.com/sripkunda/Cammy/master/build_assets/win/icon.ico",
+      "msi": true,
+      "loadingGif": "./build_assets/win/loading.gif"
+    },
     "fileAssociations": [
       {
         "ext": "md",

@@ -34,7 +34,7 @@ app.whenReady().then(() => {
 
 app.on('browser-window-focus', (e, w) => {
   let menuTemplate = Cammy.instances.filter(c => c.window == w)[0];
-  if (menuTemplate.menuTemplate)
+  if (menuTemplate && menuTemplate.menuTemplate)
     Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate.menuTemplate));
 });
 
