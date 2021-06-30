@@ -4,7 +4,7 @@
 
 ---
 
-Cammy is a GNU note-based productivity tool that syncs directly with google calendar (support for more calendar applications coming soon).
+Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.
 
 ## Download 
 
