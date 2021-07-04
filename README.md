@@ -1,10 +1,11 @@
 <p align="center">
-    <img src="./images/cammy_cover.png" alt="Cammy" width="512"/>
+    <img src="./images/cammy_cover.png" alt="Cammy" width="512"/>  
 </p>
 
 ---
 
-Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.
+<p align="center">Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.</p>
+
 
 ## Download 
 
