@@ -1,2 +1,4 @@
+title: Cammy
+description: A GNU markdown notepad that uses natural language processing to automatically detect and add events/tasks to google calendar.
 theme: jekyll-theme-cayman
 show_downloads: true
