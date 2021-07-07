@@ -1,16 +1,12 @@
-# Turn your notes into an action plan
-
-## FAQ
-
-### What is it?
+## What is it?
 
 Cammy is a free to use, open source tool that allows you to plan out your day in a notepad-like environment while allowing you to sync your most important tasks and events with google calendar. 
 
-### How does it work?
+## How does it work?
 
 Cammy uses real-time natural language processing to identify dates, tasks, and events as you type. These dates and events are then parsed for important information, such as the title, duration, date, and time of the event/task. Once a match is found, Cammy will allow you to add a task to your calendar app with a single click.
 
-### Why Cammy?
+## Why Cammy?
 
 Unlike modern productivity tools that restrict the structure and format of your todo lists and calendars to only what is offered in the app, Cammy provides you with ultimate freedom, as if you are writing on a blank sheet of paper. This helps eliminate distractions and maintain a productive environment while working. 
 
