@@ -1,7 +1,3 @@
-## Download 
-
-The download page for the latest Linux/OSX/Windows installation packages can be found [here](https://github.com/sripkunda/Cammy/releases). 
-
 ## FAQ
 
 ### What is it?
@@ -19,13 +15,13 @@ Unlike modern productivity tools that restrict the structure and format of your 
 ## Screenshots / Features
 
 <p>
-    <img src="../images/cammy_editor_screenshot.png" alt="Cammy Editor Screenshot (Light Theme)" width="400px"/>
-    <img src="../images/cammy_editor_screenshot_dark.png" alt="Cammy Editor Screenshot (Dark Theme)" width="400px"/>
+    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_editor_screenshot.png" alt="Cammy Editor Screenshot (Light Theme)" width="400px"/>
+    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_editor_screenshot_dark.png" alt="Cammy Editor Screenshot (Dark Theme)" width="400px"/>
 </p>
 
 <p>
-    <img src="../images/cammy_mytasks_editor_dark.png" alt="Cammy Editor Screenshot Task List Example (Dark Theme)" width="400px"/>
-    <img src="../images/cammy_mytasks_editor.png" alt="Cammy Editor Screenshot - Task List Example (Light Theme)" width="400px"/>
+    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_mytasks_editor_dark.png" alt="Cammy Editor Screenshot Task List Example (Dark Theme)" width="400px"/>
+    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_mytasks_editor.png" alt="Cammy Editor Screenshot - Task List Example (Light Theme)" width="400px"/>
 </p>
 
 * Automatic Event Recognition
@@ -82,7 +78,3 @@ To switch the color theme of the editor, navigate to the `Window` menu and click
 | <kbd>Ctrl</kbd> or <kbd>⌘</kbd> <kbd>K</kbd>                  | Insert Link       |
 | <kbd>Ctrl</kbd> or <kbd>⌘</kbd> <kbd>L</kbd>                  | Unordered List    |
 | <kbd>Ctrl</kbd> or <kbd>⌘</kbd> <kbd>Alt</kbd> <kbd>C</kbd>   | Insert Code Block |
-
-## Credits
-
-This project would not be possible without [EasyMDE](https://github.com/Ionaru/easy-markdown-editor), the core of the markdown editor that has been modified to fit the editing needs of Cammy's real-time markdown-preview. Cammy also uses [compromise](https://github.com/spencermountain/compromise) for natural language processing (how Cammy recognizes events, tasks, dates, etc.).
