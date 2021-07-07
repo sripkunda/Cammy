@@ -1,3 +1,5 @@
+# Turn your notes into an action plan
+
 ## FAQ
 
 ### What is it?
@@ -15,13 +17,13 @@ Unlike modern productivity tools that restrict the structure and format of your 
 ## Screenshots / Features
 
 <p>
-    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_editor_screenshot.png" alt="Cammy Editor Screenshot (Light Theme)" width="400px"/>
-    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_editor_screenshot_dark.png" alt="Cammy Editor Screenshot (Dark Theme)" width="400px"/>
+    <img src="https://raw.githubusercontent.com/sripkunda/Cammy/master/images/cammy_editor_screenshot.png" alt="Cammy Editor Screenshot (Light Theme)" width="400px"/>
+    <img src="https://raw.githubusercontent.com/sripkunda/Cammy/master/images/cammy_editor_screenshot_dark.png" alt="Cammy Editor Screenshot (Dark Theme)" width="400px"/>
 </p>
 
 <p>
-    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_mytasks_editor_dark.png" alt="Cammy Editor Screenshot Task List Example (Dark Theme)" width="400px"/>
-    <img src="https://github.com/sripkunda/Cammy/blob/master/images/cammy_mytasks_editor.png" alt="Cammy Editor Screenshot - Task List Example (Light Theme)" width="400px"/>
+    <img src="https://raw.githubusercontent.com/sripkunda/Cammy/master/images/cammy_mytasks_editor_dark.png" alt="Cammy Editor Screenshot Task List Example (Dark Theme)" width="400px"/>
+    <img src="https://raw.githubusercontent.com/sripkunda/Cammy/master/images/cammy_mytasks_editor.png" alt="Cammy Editor Screenshot - Task List Example (Light Theme)" width="400px"/>
 </p>
 
 * Automatic Event Recognition
