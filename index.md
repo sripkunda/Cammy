@@ -1,6 +1,3 @@
-<p align="center">Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.</p>
-
-
 ## Download 
 
 The download page for the latest Linux/OSX/Windows installation packages can be found [here](https://github.com/sripkunda/Cammy/releases). 
