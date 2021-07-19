@@ -1,10 +1,11 @@
 <p align="center">
-    <img src="./images/cammy_cover.png" alt="Cammy" width="512"/>
+    <img src="./images/cammy_cover.png" alt="Cammy" width="512"/>  
 </p>
 
 ---
 
-Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.
+<p align="center">Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.</p>
+
 
 ## Download
 
@@ -47,7 +48,11 @@ Cammy's editor is built for simplicity. The only thing you will see on the canva
 
 The editor uses markdown for text formatting. You can learn about markdown and how to use it [here](https://www.markdownguide.org/). _(A bubble tooltip-based toolbar for core formatting features such as headings and bullet-points is in development.)_
 
-### Saving and Opening Files
+### Event Highlight Colors
+
+Regular events and tasks are highlighted in yellow. Repeating events and tasks are highlighted in orange.
+
+### Saving and Opening Files 
 
 Cammy acts as a regular text editor, meaning that you can open, edit, and save new or existing files. The `File` menu has options to save and open files.
 
