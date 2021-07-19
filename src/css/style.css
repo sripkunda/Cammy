@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
 
 /* Variables */
 [data-theme="dark"] {
@@ -7,11 +7,11 @@
 
   --tf-yellow-txtcolor: #fff;
   --tf-yellow-background: #5c5405;
-  --tf-yellow-underline:  #a69a28;
+  --tf-yellow-underline: #a69a28;
 
   --tf-orange-txtcolor: #fff;
   --tf-orange-background: #9e5c24;
-  --tf-orange-underline:  #bf7639;
+  --tf-orange-underline: #bf7639;
 }
 
 [data-theme="light"] {
@@ -20,45 +20,47 @@
 
   --tf-yellow-txtcolor: #000;
   --tf-yellow-background: #f0ec8d;
-  --tf-yellow-underline:  #ccc65a;
+  --tf-yellow-underline: #ccc65a;
 
   --tf-orange-txtcolor: #000;
   --tf-orange-background: #f7c79e;
-  --tf-orange-underline:  #dead83;
+  --tf-orange-underline: #dead83;
 }
 
 :root {
-    --input-padding: 10px;
-    --top-offset: 2px;  
-    --font-family: 'Roboto Slab', sans-serif;
-    --font-size: 18px;
-    --md-opacity: 0.4; 
+  --input-padding: 10px;
+  --top-offset: 2px;
+  --font-family: "Roboto Slab", sans-serif;
+  --font-size: 18px;
+  --md-opacity: 0.4;
 }
 
 /* Editor/Window */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    background: var(--bg-color);
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  background: var(--bg-color);
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .editor {
   margin: 0;
   border: none;
-  resize:none;
-  font-family: 'Inter', sans-serif;
+  resize: none;
+  font-family: "Inter", sans-serif;
   height: 100%;
   width: 100%;
 }
 
 .editor-container {
-  padding: calc(var(--input-padding) - var(--top-offset)) 0px 0px var(--input-padding);
+  padding: calc(var(--input-padding) - var(--top-offset)) 0px 0px
+    var(--input-padding);
   top: 0;
   left: 0;
   right: 0;

@@ -7,36 +7,40 @@ const options = {
   toolbar: false,
   status: false,
   forceSync: true,
-  spellcheck: false
+  spellcheck: false,
 };
 
 const cammy = new CammyEditor(options, 0);
 
 // Parse and update content whenever an action happens in the editor window
-document.onkeyup = () => { cammy.updateState(); }
-document.onclick = () => { cammy.updateState(); }
+document.onkeyup = () => {
+  cammy.updateState();
+};
+document.onclick = () => {
+  cammy.updateState();
+};
 
-cammy.editor.codemirror.on("change", function(){
-  cammy.updateSaveState(); 
+cammy.editor.codemirror.on("change", function () {
+  cammy.updateSaveState();
 });
 
 // Electron event handlers
-ipcRenderer.on('savecontent', (e, args) => {
-  ipcRenderer.send('save', {content: cammy.getContent(), path: args.path}); 
+ipcRenderer.on("savecontent", (e, args) => {
+  ipcRenderer.send("save", { content: cammy.getContent(), path: args.path });
 });
 
-ipcRenderer.on('setcontent', (e, args) => {
-  cammy.setContent(args.content); 
+ipcRenderer.on("setcontent", (e, args) => {
+  cammy.setContent(args.content);
 });
 
-ipcRenderer.on('colorThemeChanged', (e, args) => {
-  CammyEditor.setColorTheme(args.theme); 
+ipcRenderer.on("colorThemeChanged", (e, args) => {
+  CammyEditor.setColorTheme(args.theme);
 });
 
-ipcRenderer.on('editorModeChanged', (e, args) => {
-  CammyEditor.setEditorMode(args.mode); 
+ipcRenderer.on("editorModeChanged", (e, args) => {
+  CammyEditor.setEditorMode(args.mode);
 });
 
-ipcRenderer.on('addToCalendar', (e, args) => {
+ipcRenderer.on("addToCalendar", (e, args) => {
   cammy.updateState(true);
 });

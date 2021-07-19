@@ -1,8 +1,8 @@
 {
-    "planner": {
-        "parseEvents": true
-    }, 
-    "text": {
-        "parseEvents": false
-    }
+  "planner": {
+    "parseEvents": true
+  },
+  "text": {
+    "parseEvents": false
+  }
 }

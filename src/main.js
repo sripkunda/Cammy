@@ -1,10 +1,9 @@
-const { app, BrowserWindow, Menu, Tray, nativeImage } = require('electron');
-const path = require('path');
-const Cammy = require(path.join(__dirname, 'js/native/window'));
-if (process.platform !== 'darwin') require('update-electron-app')(); 
+const { app, BrowserWindow, Menu, Tray, nativeImage } = require("electron");
+const path = require("path");
+const Cammy = require(path.join(__dirname, "js/native/window"));
+if (process.platform !== "darwin") require("update-electron-app")();
 
 app.whenReady().then(() => {
-
   // Create tray for Cammy
 
   const image = nativeImage.createFromPath(
@@ -14,34 +13,35 @@ app.whenReady().then(() => {
   tray = new Tray(image.resize({ width: 16, height: 16 }));
   var contextMenu = Menu.buildFromTemplate([
     {
-      label: 'New Note', click: function () {
+      label: "New Note",
+      click: function () {
         Cammy.newEditor();
-      }
+      },
     },
     {
-      label: 'Exit Cammy', click: function () {
+      label: "Exit Cammy",
+      click: function () {
         app.isQuiting = true;
         app.quit();
-      }
-    }
+      },
+    },
   ]);
 
   tray.setContextMenu(contextMenu);
 
   Cammy.newEditor();
-
 });
 
-app.on('browser-window-focus', (e, w) => {
-  let menuTemplate = Cammy.instances.filter(c => c.window == w)[0];
+app.on("browser-window-focus", (e, w) => {
+  let menuTemplate = Cammy.instances.filter((c) => c.window == w)[0];
   if (menuTemplate && menuTemplate.menuTemplate)
     Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate.menuTemplate));
 });
 
-app.on('window-all-closed', function () {
-  app.quit()
+app.on("window-all-closed", function () {
+  app.quit();
 });
 
-app.on('activate', async function () {
+app.on("activate", async function () {
   if (BrowserWindow.getAllWindows().length === 0) await Cammy.newEditor();
 });

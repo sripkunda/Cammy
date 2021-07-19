@@ -6,15 +6,15 @@
 
 Cammy is a GNU markdown notepad that detects and adds tasks/events to google calendar.
 
-## Download 
+## Download
 
-The download page for the latest Linux/OSX/Windows installation packages can be found [here](https://github.com/sripkunda/Cammy/releases). 
+The download page for the latest Linux/OSX/Windows installation packages can be found [here](https://github.com/sripkunda/Cammy/releases).
 
 ## FAQ
 
 ### What is it?
 
-Cammy is a free to use, open source tool that allows you to plan out your day in a notepad-like environment while allowing you to sync your most important tasks and events with google calendar. 
+Cammy is a free to use, open source tool that allows you to plan out your day in a notepad-like environment while allowing you to sync your most important tasks and events with google calendar.
 
 ### How does it work?
 
@@ -22,7 +22,7 @@ Cammy uses real-time natural language processing to identify dates, tasks, and e
 
 ### Why Cammy?
 
-Unlike modern productivity tools that restrict the structure and format of your todo lists and calendars to only what is offered in the app, Cammy provides you with ultimate freedom, as if you are writing on a blank sheet of paper. This helps eliminate distractions and maintain a productive environment while working. 
+Unlike modern productivity tools that restrict the structure and format of your todo lists and calendars to only what is offered in the app, Cammy provides you with ultimate freedom, as if you are writing on a blank sheet of paper. This helps eliminate distractions and maintain a productive environment while working.
 
 ## Screenshots / Features
 
@@ -36,24 +36,24 @@ Unlike modern productivity tools that restrict the structure and format of your 
     <img src="./images/cammy_mytasks_editor.png" alt="Cammy Editor Screenshot - Task List Example (Light Theme)" width="400px"/>
 </p>
 
-* Automatic Event Recognition
-* Multiple Color Themes (Light & Dark)
-* Real-time markdown editing for productive note-taking and planning
-* Free and Open Source
+- Automatic Event Recognition
+- Multiple Color Themes (Light & Dark)
+- Real-time markdown editing for productive note-taking and planning
+- Free and Open Source
 
 ## Using Cammy
 
-Cammy's editor is built for simplicity. The only thing you will see on the canvas is the editor window, with no additional toolbars or dialogs. 
+Cammy's editor is built for simplicity. The only thing you will see on the canvas is the editor window, with no additional toolbars or dialogs.
 
-The editor uses markdown for text formatting. You can learn about markdown and how to use it [here](https://www.markdownguide.org/). *(A bubble tooltip-based toolbar for core formatting features such as headings and bullet-points is in development.)*
+The editor uses markdown for text formatting. You can learn about markdown and how to use it [here](https://www.markdownguide.org/). _(A bubble tooltip-based toolbar for core formatting features such as headings and bullet-points is in development.)_
 
-### Saving and Opening Files 
+### Saving and Opening Files
 
-Cammy acts as a regular text editor, meaning that you can open, edit, and save new or existing files. The `File` menu has options to save and open files. 
+Cammy acts as a regular text editor, meaning that you can open, edit, and save new or existing files. The `File` menu has options to save and open files.
 
 ### Adding events to the calendar
 
-Once Cammy recognizes a piece of text as an event, it will automatically highlight it to indicate that it can be automatically added to your calendar (unless event recognition is turned off). There are two ways to add an event to your calendar. 
+Once Cammy recognizes a piece of text as an event, it will automatically highlight it to indicate that it can be automatically added to your calendar (unless event recognition is turned off). There are two ways to add an event to your calendar.
 
 The first is to press <kbd>Ctrl</kbd> or <kbd>⌘</kbd> <kbd>Shift</kbd> <kbd>A</kbd> while on the line which has a recognized event. The second is to click on the line in the editor window.
 
@@ -61,7 +61,7 @@ The first is to press <kbd>Ctrl</kbd> or <kbd>⌘</kbd> <kbd>Shift</kbd> <kbd>A<
 
 To switch the color theme of the editor, navigate to the `Window` menu and click `Switch Color Theme`. Alternatively, press <kbd>Ctrl</kbd> or <kbd>⌘</kbd> <kbd>Shift</kbd> <kbd>,</kbd> on your keyboard.
 
-### Keyboard Shortcuts 
+### Keyboard Shortcuts
 
 **Editor:**
 
