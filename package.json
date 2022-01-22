@@ -20,7 +20,7 @@
     "electron-builder-squirrel-windows": "^22.11.7",
     "electron-find": "^1.0.6",
     "electron-settings": "^4.0.2",
-    "marked": "^2.0.3",
+    "marked": "^4.0.10",
     "remove-markdown": "^0.3.0",
     "update-electron-app": "^2.0.1"
   },
